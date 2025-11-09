@@ -28,24 +28,56 @@ const Navbar = () => {
               </svg>
             </div>
             <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-              <Link to="/">home</Link>
-              <Link to="/bills">Bills</Link>
-              {user ? <Link to="/mybill">my pay Bill</Link> : ''}
-              {user ? <Link to="/profile">profile</Link> : ''}
+              <NavLink to="/" className={({ isActive }) => `font-bold  ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                Home
+              </NavLink>
+
+              <NavLink to="/bills" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                Bills
+              </NavLink>
+              {user ? (
+                <NavLink to="/mybill" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                  my pay Bill
+                </NavLink>
+              ) : (
+                ''
+              )}
+              {user ? (
+                <NavLink to="/profile" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                  profile
+                </NavLink>
+              ) : (
+                ''
+              )}
             </ul>
           </div>
-          <div className='bg-gradient-to-r to-orange-400 from-rose-500 w-13 h-13 rounded-full flex items-center'>
-      <img src={logo} alt="" />
-     
+          <div className="bg-gradient-to-r to-orange-400 from-rose-500 w-13 h-13 rounded-full flex items-center">
+            <img src={logo} alt="" />
           </div>
-          
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex gap-3 items-center">
-            <Link to="/">home</Link>
-            <Link to="/bills">Bills</Link>
-            {user ? <Link to="/mybill">my pay Bill</Link> : ''}
-            {user ? <Link to="/profile">profile</Link> : ''}
+            <NavLink to="/" className={({ isActive }) => `font-bold  ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+              Home
+            </NavLink>
+
+            <NavLink to="/bills" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+              Bills
+            </NavLink>
+            {user ? (
+              <NavLink to="/mybill" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                my pay Bill
+              </NavLink>
+            ) : (
+              ''
+            )}
+            {user ? (
+              <NavLink to="/profile" className={({ isActive }) => `font-bold ${isActive ? 'bg-gradient-to-r to-orange-400 from-rose-500 text-white px-3 py-1 rounded-md' : ''}`}>
+                profile
+              </NavLink>
+            ) : (
+              ''
+            )}
           </ul>
         </div>
         <div className="navbar-end">
@@ -69,7 +101,6 @@ const Navbar = () => {
               LOG IN
             </NavLink>
           )}
-
         </div>
       </div>
     </div>
