@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router';
 
 const BillCard = ({bill}) => {
- const  {image,title,category, location,amount, _id} = bill
+ const  {image,title,category, location,amount,date, _id} = bill
   return (
 <div className="border rounded-2xl shadow-md p-4 flex flex-col justify-between">
   <img src={image} alt={title} className="rounded-lg h-48 w-full object-cover" />
@@ -12,6 +12,7 @@ const BillCard = ({bill}) => {
     <p className="text-gray-500 text-sm">Category: {category}</p>
     <p className="text-gray-500 text-sm">Location: {location}</p>
     <p className="text-gray-700 font-bold">৳ {amount}</p>
+    <p className="text-gray-700 font-bold"> {date}</p>
   </div>
 
 

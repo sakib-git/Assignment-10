@@ -7,30 +7,7 @@ const BillDetails = () => {
   const  {image,title,category, location,amount,email,date, description, 
 } = data
   return (
-    //   <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
-      
-    //   <img
-    //     src={image}
-    //     alt={title}
-    //     className="w-full h-64 object-cover rounded-xl mb-6 shadow-md"
-    //   />
-
-    //   <div className="space-y-3">
-    //     <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-
-    //     <div className="flex flex-wrap gap-4 text-gray-600">
-    //       <p><span className="font-semibold">Category:</span> {category}</p>
-    //       <p><span className="font-semibold">Location:</span> {location}</p>
-    //       <p><span className="font-semibold">Amount:</span> ৳ {amount}</p>
-    //       <p><span className="font-semibold">Date:</span> {date}</p>
-    //       <p><span className="font-semibold">Posted by:</span> {email}</p>
-    //     </div>
-
-    //     <p className="text-gray-700 mt-4">{description}</p>
-
    
-    //   </div>
-    // </div>
       <div className="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg flex flex-col md:flex-row gap-6">
       
       <div className="md:w-1/2">
