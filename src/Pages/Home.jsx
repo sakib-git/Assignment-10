@@ -6,7 +6,8 @@ import Section from '../Components/Section';
 const Home = () => {
   return (
     <div className='mx-auto max-w-[1440px]'>
-      <div className='mt-20 max-xl:px-5'>
+ 
+      <div className='mt-5 max-xl:px-5'>
         <Banner></Banner>
       </div>
        <div>

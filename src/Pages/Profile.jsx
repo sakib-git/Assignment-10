@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <div className="max-w-[1200px] mx-auto mt-10 p-6">
       <div
-        className="bg-base rounded-3xl shadow grid md:grid-cols-3 gap-8 p-8 hover:shadow-xl"
+        className="bg-[#f1f5f9] rounded-3xl shadow grid md:grid-cols-3 gap-8 p-8 hover:shadow-xl"
       >
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <div className="size-32 mb-4 rounded-full overflow-hidden border-4 border-white shadow-lg">
@@ -57,7 +57,7 @@ const Profile = () => {
             </div>
 
             <div className="md:col-span-2 flex justify-end mt-4">
-              <button type="submit" className=" btn px-6 py-2 shadow-2xltext-white rounded-lg font-semibold transition-all hover:bg-[#f1f5f9]">
+              <button type="submit" className=" btn px-6 py-2 shadow-2xltext-white rounded-lg font-semibold transition-all hover:bg-white">
                 Update Profile
               </button>
             </div>
