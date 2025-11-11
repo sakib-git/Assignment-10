@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-base shadow-sm ">
+    <div className="bg-[var(--navbar-bg)]  shadow-sm ">
       <div className="navbar max-w-[1440px] mx-auto justify-between  ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -39,22 +39,22 @@ const Navbar = () => {
               </svg>
             </div>
             <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-              <NavLink to="/" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[#f1f5f9] px-4 py-2 rounded-md' : ''}`}>
+              <NavLink to="/" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[var(--active)] px-4 py-2 rounded-md' : ''}`}>
                 Home
               </NavLink>
 
-              <NavLink to="/bills" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+              <NavLink to="/bills" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[var(--active)] px-4 py-2 rounded-md' : ''}`}>
                 Bills
               </NavLink>
               {user ? (
-                <NavLink to="/mybill" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+                <NavLink to="/mybill" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[var(--active)]  px-4 py-2 rounded-md' : ''}`}>
                   myPayBill
                 </NavLink>
               ) : (
                 ''
               )}
               {user ? (
-                <NavLink to="/profile" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+                <NavLink to="/profile" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[var(--active)]  px-4 py-2 rounded-md' : ''}`}>
                   profile
                 </NavLink>
               ) : (
@@ -70,22 +70,22 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex gap-3 items-center">
-            <NavLink to="/" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[#f1f5f9] px-4 py-2 rounded-md' : ''}`}>
+            <NavLink to="/" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[var(--active)] px-4 py-2 rounded-md' : ''}`}>
               Home
             </NavLink>
 
-            <NavLink to="/bills" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+            <NavLink to="/bills" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[var(--active)]  px-4 py-2 rounded-md' : ''}`}>
               Bills
             </NavLink>
             {user ? (
-              <NavLink to="/mybill" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+              <NavLink to="/mybill" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[var(--active)]  px-4 py-2 rounded-md' : ''}`}>
                 myPayBill
               </NavLink>
             ) : (
               ''
             )}
             {user ? (
-              <NavLink to="/profile" className={({ isActive }) => `font-semibold ${isActive ? 'bg-[#f1f5f9]  px-4 py-2 rounded-md' : ''}`}>
+              <NavLink to="/profile" className={({ isActive }) => `font-semibold  ${isActive ? 'bg-[var(--active)]   px-4 py-2 rounded-md' : ''}`}>
                 profile
               </NavLink>
             ) : (

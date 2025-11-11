@@ -10,6 +10,7 @@ import Bills from '../Pages/BIlls';
 import MyPayBill from '../Pages/MyPayBill';
 import BillDetails from '../Pages/BillDetails';
 import CategoryPage from '../Components/CategoryPage';
+import NotFount from '../Components/NotFount';
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/details/:id',
-        element: <BillDetails></BillDetails>,
+        element: (
+          <PrivateRoutes>
+            <BillDetails></BillDetails>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) => fetch(`http://localhost:3000/bills-details/${params.id}`),
       },
       {
@@ -63,7 +68,13 @@ const router = createBrowserRouter([
         element: <CategoryPage></CategoryPage>,
         loader: ({ params }) => fetch(`http://localhost:3000/bills?category=${params.id}`),
       },
+   
     ],
+  
+  },
+   {
+    path: '*',
+    element: <NotFount></NotFount>,
   },
 ]);
 

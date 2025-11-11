@@ -1,15 +1,17 @@
 import { ArrowLeft,  ArrowRightToLine,  } from 'lucide-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import { auth } from '../FireBase/Firebase.config';
+import { toast } from 'react-toastify';
 
 
 
 const Register = () => {
 const Googleprovider = new GoogleAuthProvider();
   const {createUser, setUser, } = useContext(AuthContext)
+
   
   const navigate = useNavigate();
    const handleRegister = (e) => {
@@ -18,6 +20,13 @@ const Googleprovider = new GoogleAuthProvider();
     const photoURL = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+       const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordPattern.test(password)) {
+      toast.error('Password must be at least 6 characters long and include both uppercase and lowercase letters.');
+      
+      return;
+    }
      createUser(email, password)
       .then((result) => {
         setUser(result.user);
@@ -73,7 +82,9 @@ const Googleprovider = new GoogleAuthProvider();
                 <p className="text-gray-500 font-medium">or</p>
                 <p className="flex-1 border-t border-gray-300"></p>
               </div>
-              <button type='submit' onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] w-full">
+        
+
+              <button type='button'  onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] w-full">
                 <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <g>
                     <path d="m0 0H512V512H0" fill="#fff"></path>

@@ -1,10 +1,12 @@
-import React from 'react';
+
 import Banner from '../Components/Banner';
 import Category from '../Components/Category';
 import Section from '../Components/Section';
 import LatestBills from '../Components/LatestBills';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Home = () => {
+
   return (
     <div className='mx-auto max-w-[1440px]'>
  
@@ -21,6 +23,7 @@ const Home = () => {
         <Section></Section>
        </div>
     </div>
+    
   );
 };
 

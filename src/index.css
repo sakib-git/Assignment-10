@@ -1,3 +1,17 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 @plugin "daisyui";
+
+
+:root {
+  --navbar-bg:white;   
+  --active :#f1f5f9; 
+  --category :#1e2939;
+}
+
+[data-theme="dark"] {
+  --navbar-bg:#1f2937; ; 
+  --active :black;
+  --category :white;
+ 
+}

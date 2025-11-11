@@ -34,21 +34,21 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="bg-[#f1f5f9]  border border-gray-300 h-96 flex flex-col justify-center items-center shadow-2xl text-center p-4 rounded-xl ">
+          <div className="bg-[var(--navbar-bg)]  border border-gray-300 h-96 flex flex-col justify-center items-center shadow-2xl text-center p-4 rounded-xl ">
             <h2 className="text-3xl font-bold mb-4">Track All Your Bills Easily</h2>
             <p className="text-lg max-w-xl">View all your electricity, water, gas, or internet bills in one place. Easily analyze paid vs. unpaid bills through a graph.</p>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="bg-[#f1f5f9] border border-gray-300 h-96 flex flex-col justify-center items-center shadow-xl text-center p-4 rounded-xl ">
+          <div className="bg-[var(--navbar-bg)] border border-gray-300 h-96 flex flex-col justify-center items-center shadow-xl text-center p-4 rounded-xl ">
             <h2 className="text-3xl font-bold mb-4">Never Miss a Payment</h2>
             <p className="text-lg max-w-xl">Get reminder notifications according to your bill's due date, and never miss a payment again.</p>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="bg-[#f1f5f9] border border-gray-300 h-96 flex flex-col justify-center items-center shadow-xl text-center p-4 rounded-xl">
+          <div className="bg-[var(--navbar-bg)] border border-gray-300 h-96 flex flex-col justify-center items-center shadow-xl text-center p-4 rounded-xl">
             <h2 className="text-3xl font-bold mb-4">Analyze Your Expenses</h2>
             <p className="text-lg max-w-xl">View your utility expenses monthly or yearly in charts, and plan your budget easily. ✅</p>
           </div>

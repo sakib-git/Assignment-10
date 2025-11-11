@@ -21,14 +21,14 @@ const Profile = () => {
   return (
     <div className="max-w-[1200px] mx-auto mt-10 p-6">
       <div
-        className="bg-[#f1f5f9] rounded-3xl shadow grid md:grid-cols-3 gap-8 p-8 hover:shadow-xl"
+        className="bg-[var(--navbar-bg)] rounded-3xl shadow grid md:grid-cols-3 gap-8 p-8 hover:shadow-xl"
       >
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <div className="size-32 mb-4 rounded-full overflow-hidden border-4 border-white shadow-lg">
             <img src={user.photoURL} alt="ProfilePic" className="size-full object-cover" />
           </div>
           <h1 className="text-2xl font-bold mb-1">{user.displayName}</h1>
-          <p className="text-gray-600">{user.email}</p>
+          <p className="text-[var(--category)]">{user.email}</p>
         </div>
 
         <div className="md:col-span-2">
@@ -37,22 +37,22 @@ const Profile = () => {
 
           <form onSubmit={updateUserInfo} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col">
-              <label className="text-gray-600 mb-2">Name</label>
+              <label className="text-[var(--category)] mb-2">Name</label>
               <input defaultValue={user.displayName} type="text" name="name" placeholder="Enter your Name" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
             </div>
 
             <div className="flex flex-col">
-              <label className="text-gray-600 mb-2">Photo URL</label>
+              <label className="text-[var(--category)] mb-2">Photo URL</label>
               <input defaultValue={user.photoURL} type="text" name="photo" placeholder="Photo URL" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
             </div>
 
             <div className="flex flex-col">
-              <label className="text-gray-600 mb-2">Email</label>
+              <label className="text-[var(--category)] mb-2">Email</label>
               <input readOnly defaultValue={user.email} type="email" name="email" placeholder="Email" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
             </div>
 
             <div className="flex flex-col">
-              <label className="text-gray-600 mb-2">Password</label>
+              <label className="text-[var(--category)] mb-2">Password</label>
               <input type="password" name="password" placeholder="Password" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
             </div>
 
