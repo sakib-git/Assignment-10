@@ -29,8 +29,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[var(--navbar-bg)]  shadow-sm ">
-      <div className="navbar max-w-[1440px] mx-auto justify-between  ">
+    <div className="bg-[var(--navbar-bg)]  shadow-sm fixed top-0 left-0 right-0 z-50 ">
+      <div className="navbar max-w-[1440px] mx-auto justify-between ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

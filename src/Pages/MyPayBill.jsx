@@ -1,6 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
+
+
+
 
 const MyPayBill = () => {
  const [bills, setBills] = useState([]);
@@ -10,12 +16,12 @@ const MyPayBill = () => {
  const userEmail = user.email
 //  console.log(userEmail)
   useEffect(() => {
-    // fetch('http://localhost:3000/paybillpersonal')
+   
     fetch(`http://localhost:3000/paybillpersonal?email=${userEmail}`)
     .then(res => res.json())
     .then(data => {
       setBills(data)
-      // console.log(data)
+     
     })
   },[])
  const handleModal = (id) => {
@@ -33,7 +39,10 @@ const handlesubmit = (e) => {
     phone: e.target.phone.value,
     created_date: new Date(),
   };
-
+ if (!updatebill.name || !updatebill.address || !updatebill.phone) {
+    toast.error("Please fill in all fields before submitting!");
+    return;
+  }
   fetch(`http://localhost:3000/paybill/${selectedId}`, {
     method: "PUT",
     headers: {
@@ -43,16 +52,13 @@ const handlesubmit = (e) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      setBills((prevBills) =>
-          prevBills.map((bill) =>
-            bill._id === selectedId ? { ...bill, updatebill } : bill
-          ))
+      window.location.reload()
       toast.success("Bill updated successfully!");
       billModalRef.current.close();
     });
 };
 const handleDelete = (id) => {
-  console.log(id)
+ 
    fetch(`http://localhost:3000/paybill/${id}`, {
     method: "DELETE",
     headers: {
@@ -61,13 +67,57 @@ const handleDelete = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      toast.success("delete succedfully!");
+
+      Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+    window.location.reload()
+  }
+});
+    
+   
       
     });
 }
+const handleDownloadReport = () => {
+  const doc = new jsPDF();
+
+  const columns = ["Name", "Email", "Amount", "Address", "Phone", "Date"];
+  const rows = bills.map(b => [
+    b.name,
+    b.created_by,
+    b.amount,
+    b.address,
+    b.phone,
+    new Date(b.created_date).toLocaleString(),
+  ]);
+
+ 
+  doc.autoTable({
+    head: [columns],
+    body: rows,
+    startY: 25,
+    styles: { fontSize: 10 },
+  });
+
+  doc.save("MyPayBill_Report.pdf");
+};
+
+
   return (
-    <div className='max-w-[1440px] mx-auto'>
+    <div className='max-w-[1440px] mx-auto mt-20'>
       <title>myPayBill</title>
    
 <div className="p-4">
@@ -142,7 +192,7 @@ const handleDelete = (id) => {
               </div>
               <div>
                 <label className="block font-semibold mb-1">Phone</label>
-                <input type="text" name='phone' className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Number" />
+                <input type="text" name='phone'  className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Number" />
               </div>
                <div>
                 <label className="block font-semibold mb-1">Date</label>
@@ -159,7 +209,9 @@ const handleDelete = (id) => {
     </tbody>
   </table>
 </div>
-
+<div className='flex justify-end py-5'>
+  <button onClick={handleDownloadReport} className='border border-gray-500 px-3 py-1 rounded-md '>Download Report</button>
+</div>
 
     </div>
   );

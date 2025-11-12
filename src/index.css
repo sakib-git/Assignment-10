@@ -2,21 +2,17 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @plugin "daisyui";
 
-
 :root {
-  --navbar-bg:white;   
-  --active :#f1f5f9; 
-  --category :#1e2939;
-    --input-bg: #f3f4f6;
-
-
+  --navbar-bg: white;
+  --active: #f1f5f9;
+  --category: #1e2939;
+  --input-bg: #f3f4f6;
 }
 
-[data-theme="dark"] {
-  --navbar-bg:#1f2937; ; 
-  --active :black;
-  --category :white;
+[data-theme='dark'] {
+  --navbar-bg: #1f2937;
+  --active: black;
+  --category: white;
   --input-bg: #1f2937;
-
  
 }

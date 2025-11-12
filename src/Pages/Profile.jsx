@@ -19,7 +19,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto mt-10 p-6">
+    <div className="max-w-[1200px] mx-auto mt-20 p-6">
       <title>Profile</title>
       <div
         className="bg-[var(--navbar-bg)] rounded-3xl shadow grid md:grid-cols-3 gap-8 p-8 hover:shadow-xl"

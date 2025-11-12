@@ -24,6 +24,10 @@ const BillDetails = () => {
       amount
       
     };
+  if (!formData.name || !formData.address || !formData.phone) {
+    toast.error("Please fill in all fields before submitting!");
+    return;
+  }
     fetch('http://localhost:3000/paybill', {
       method : "POST",
       headers : {
@@ -116,7 +120,7 @@ const BillDetails = () => {
                 <input type="text" value={date|| ''} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Date" />
               </div>
               <div className="flex justify-end mt-6">
-                <button className=" bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all w-fit font-bold ">Pay Bill</button>
+                <button className=" bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all w-fit font-bold ">Submit</button>
               </div>
             </form>
           </div>

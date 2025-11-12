@@ -9,7 +9,6 @@ const Category = () => {
     fetch('http://localhost:3000/bills')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const allCategories = data.map((bill) => bill.category);
         const uniqueCategories = [];
         allCategories.forEach((c) => {

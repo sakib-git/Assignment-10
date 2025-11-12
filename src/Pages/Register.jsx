@@ -66,7 +66,7 @@ const Googleprovider = new GoogleAuthProvider();
             <p className="font-bold">LOG IN</p>
           </Link>
         </div>
-        <div className="flex-1 bg-white shadow-2xl p-10 text-center rounded-br-md rounded-tr-md max-md:rounded-none  w-full">
+        <div className="flex-1  shadow-2xl p-10 text-center rounded-br-md rounded-tr-md max-md:rounded-none  w-full">
           <form onSubmit={handleRegister} className="flex flex-col gap-6 mx-auto max-w-md ">
             <h2 className="text-5xl font-extrabold bg-gradient-to-r from-orange-400 to-rose-500 text-transparent bg-clip-text">REGISTER</h2>
 

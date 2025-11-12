@@ -4,13 +4,16 @@ import Category from '../Components/Category';
 import Section from '../Components/Section';
 import LatestBills from '../Components/LatestBills';
 import { AuthContext } from '../Provider/AuthProvider';
+import Section2 from '../Components/Section2';
 
 const Home = () => {
 
   return (
-    <div className='mx-auto max-w-[1440px] '>
+    <div>
+   
+    <div className='mx-auto max-w-[1440px]  '>
   <title>Home</title>
-      <div className='mt-5 max-xl:px-5'>
+      <div className=' max-xl:px-5 mt-40'>
         <Banner></Banner>
       </div>
        <div>
@@ -21,6 +24,11 @@ const Home = () => {
        </div>
        <div>
         <Section></Section>
+       </div>
+   
+    </div>
+           <div>
+        <Section2></Section2>
        </div>
     </div>
     

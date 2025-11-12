@@ -53,7 +53,7 @@ const Login = () => {
     <div className="max-w-[1440px] mx-auto mt-20">
       <title>login</title>
       <div className="flex max-w-[800px] mx-auto max-md:flex-col max-md:px-5">
-        <div className="flex-1 bg-white shadow-2xl p-10 text-center rounded-bl-md rounded-tl-md max-md:rounded-none  w-full">
+        <div className="flex-1 shadow-2xl p-10 text-center rounded-bl-md rounded-tl-md max-md:rounded-none  w-full">
           <form onSubmit={handlelogin} className="flex flex-col gap-6 mx-auto max-w-md ">
             <h2 className="text-5xl font-extrabold bg-gradient-to-r from-orange-400 to-rose-500 text-transparent bg-clip-text">LOG IN</h2>
             <input type="email" ref={emailRef} placeholder="Email" name="email"   className="input w-full "  />
@@ -67,7 +67,7 @@ const Login = () => {
               </div>
               
               <div onClick={handleRestPassword}>
-                <p className="text-start cursor-pointer  hover:underline text-black">Forgot password?</p>
+                <p className="text-start cursor-pointer  hover:underline ">Forgot password?</p>
               </div>
             </div>
             <div className="flex gap-2 flex-col">
