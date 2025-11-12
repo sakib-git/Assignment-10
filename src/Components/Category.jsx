@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,23 @@ const Category = () => {
 
   return (
     <div>
-      <h1 className="text-2xl md:text-4xl text-center py-10 font-bold text-[var(--category)]">Manage Your Electricity, Gas, Water & Internet Bills Effortlessly!</h1>
+        
+   <h1 className="text-2xl md:text-4xl text-center py-10 font-bold text-[var(--category)]">
+  Manage Your{" "}
+  <span className="text-blue-600">
+    <Typewriter
+      words={["Electricity", "Gas", "Water", "Internet"]}
+      loop={true}
+      cursor
+      cursorStyle="|"
+      typeSpeed={80}
+      deleteSpeed={50}
+      delaySpeed={1000}
+    />
+  </span>{" "}
+  Bills Effortlessly!
+</h1>
+
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 max-lg:px-4">
           {categories.map((category) => (

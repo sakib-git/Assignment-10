@@ -19,7 +19,9 @@ const BillDetails = () => {
       name : e.target.name.value,
       address : e.target.address.value,
       phone : e.target.phone.value,
-      created_by : user.email
+      created_by : user.email,
+      created_date: new Date(),
+      amount
       
     };
     fetch('http://localhost:3000/paybill', {
@@ -32,7 +34,7 @@ const BillDetails = () => {
     .then(res => res.json())
     .then(data )
      toast.success('Bill Paid Successfully');
-    navigate('/bills')
+    navigate('/mybill')
   };
   return (
     <div className="max-w-5xl mx-auto mt-10 p-6  bg-[var(--navbar-bg)]  rounded-2xl shadow-lg flex flex-col md:flex-row gap-6">
@@ -81,37 +83,37 @@ const BillDetails = () => {
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
-            <h3 className="font-bold text-lg">Bill Payment</h3>
-            <p className="py-4"> Please fill in the required form</p>
-            <form onSubmit={handlesubmit}>
+            <h3 className="font-bold text-2xl text-center">Bill Payment</h3>
+            <p className="py-4 text-center"> Please fill in the required form</p>
+            <form onSubmit={handlesubmit} className='flex flex-col gap-2'>
               <div>
                 <label className="block font-semibold mb-1">Email</label>
-                <input type="email" value={email || ''} readOnly className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="Email" />
+                <input type="email" value={email || ''} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Email" />
               </div>
               <div>
                 <label className="block font-semibold mb-1">BillId</label>
-                <input type="text" value={_id || ''} readOnly className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="ID" />
+                <input type="text" value={_id || ''} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="ID" />
               </div>
               <div>
                 <label className="block font-semibold mb-1">Amount</label>
-                <input type="text" value={amount || ''} readOnly className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="Amount" />
+                <input type="text" value={amount || ''} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Amount" />
               </div>
 
               <div>
                 <label className="block font-semibold mb-1">Name</label>
-                <input type="text" name='name' className="w-full border px-3  py-2 rounded-md bg-gray-100" placeholder="Name" />
+                <input type="text" name='name' className="w-full border px-3  py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Name" />
               </div>
               <div>
                 <label className="block font-semibold mb-1">Address</label>
-                <input type="text" name='address' className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="Address" />
+                <input type="text" name='address' className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Address" />
               </div>
               <div>
                 <label className="block font-semibold mb-1">Phone</label>
-                <input type="text" name='phone' className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="Number" />
+                <input type="text" name='phone' className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Number" />
               </div>
                <div>
                 <label className="block font-semibold mb-1">Date</label>
-                <input type="text" value={date|| ''} readOnly className="w-full border px-3 py-2 rounded-md bg-gray-100" placeholder="Date" />
+                <input type="text" value={date|| ''} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Date" />
               </div>
               <div className="flex justify-end mt-6">
                 <button className=" bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all w-fit font-bold ">Pay Bill</button>

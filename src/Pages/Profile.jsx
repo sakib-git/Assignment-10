@@ -39,22 +39,22 @@ const Profile = () => {
           <form onSubmit={updateUserInfo} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col">
               <label className="text-[var(--category)] mb-2">Name</label>
-              <input defaultValue={user.displayName} type="text" name="name" placeholder="Enter your Name" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
+              <input defaultValue={user.displayName} type="text" name="name" placeholder="Enter your Name" className="input px-4 py-2 rounded-lg border text-[var(--input-text)] bg-[var(--input-bg)]  focus:outline  " />
             </div>
 
             <div className="flex flex-col">
               <label className="text-[var(--category)] mb-2">Photo URL</label>
-              <input defaultValue={user.photoURL} type="text" name="photo" placeholder="Photo URL" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
+              <input defaultValue={user.photoURL} type="text" name="photo" placeholder="Photo URL" className="input px-4 py-2 rounded-lg border text-[var(--input-text)] bg-[var(--input-bg)]   focus:outline  " />
             </div>
 
             <div className="flex flex-col">
               <label className="text-[var(--category)] mb-2">Email</label>
-              <input readOnly defaultValue={user.email} type="email" name="email" placeholder="Email" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
+              <input readOnly defaultValue={user.email} type="email" name="email" placeholder="Email" className="input px-4 py-2 rounded-lg border text-[var(--input-text)] bg-[var(--input-bg)]  focus:outline  " />
             </div>
 
             <div className="flex flex-col">
               <label className="text-[var(--category)] mb-2">Password</label>
-              <input type="password" name="password" placeholder="Password" className="input px-4 py-2 rounded-lg border text-black focus:outline  " />
+              <input type="password" name="password" placeholder="Password" className="input px-4 py-2 rounded-lg border text-[var(--input-text)] bg-[var(--input-bg)]  focus:outline  " />
             </div>
 
             <div className="md:col-span-2 flex justify-end mt-4">

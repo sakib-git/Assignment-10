@@ -54,7 +54,7 @@ const Googleprovider = new GoogleAuthProvider();
   return (
     <div className="max-w-[1440px] mx-auto mt-20">
       <div className="flex max-w-[800px] mx-auto max-md:flex-col max-md:px-5">
-        <div className="flex-1  bg-gradient-to-r to-[#e2851d] from-[#de513d] text-center p-10 text-white flex flex-col justify-center gap-5 rounded-br-md rounded-tr-md max-md:rounded-none">
+        <div className="flex-1  bg-gradient-to-r to-[#e2851d] from-[#de513d] text-center p-10 text-white flex flex-col justify-center gap-5  rounded-bl-md rounded-tl-md max-md:rounded-none">
           <div className="mx-auto">
             <ArrowRightToLine size={60} />
           </div>
@@ -66,7 +66,7 @@ const Googleprovider = new GoogleAuthProvider();
             <p className="font-bold">LOG IN</p>
           </Link>
         </div>
-        <div className="flex-1 bg-white shadow-2xl p-10 text-center rounded-bl-md rounded-t-md max-md:rounded-none  w-full">
+        <div className="flex-1 bg-white shadow-2xl p-10 text-center rounded-br-md rounded-tr-md max-md:rounded-none  w-full">
           <form onSubmit={handleRegister} className="flex flex-col gap-6 mx-auto max-w-md ">
             <h2 className="text-5xl font-extrabold bg-gradient-to-r from-orange-400 to-rose-500 text-transparent bg-clip-text">REGISTER</h2>
 

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 const BillCard = ({bill}) => {
  const  {image,title,category, location,amount,date, _id} = bill
   return (
-<div className="border rounded-2xl shadow-md p-4 flex flex-col justify-between">
+<div className="border rounded-2xl shadow-md p-4 flex flex-col justify-between ">
   <img src={image} alt={title} className="rounded-lg h-48 w-full object-cover" />
 
   <div className="mt-3 space-y-1">

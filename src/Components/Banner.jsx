@@ -17,7 +17,7 @@ const Banner = () => {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <>
+    <div className='rounded-xl overflow-hidden'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -33,7 +33,7 @@ const Banner = () => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        <SwiperSlide>
+        <SwiperSlide >
           <div className="bg-[var(--navbar-bg)]  border border-gray-300 h-96 flex flex-col justify-center items-center shadow-2xl text-center p-4 rounded-xl ">
             <h2 className="text-3xl font-bold mb-4">Track All Your Bills Easily</h2>
             <p className="text-lg max-w-xl">View all your electricity, water, gas, or internet bills in one place. Easily analyze paid vs. unpaid bills through a graph.</p>
@@ -60,7 +60,7 @@ const Banner = () => {
           <span className="border px-2 py-1 rounded-full hidden" ref={progressContent}></span>
         </div>
       </Swiper>
-    </>
+    </div>
   );
 };
 

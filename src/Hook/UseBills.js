@@ -8,7 +8,7 @@ const UseBills = () => {
 
   useEffect(() => {
     axios('http://localhost:3000/bills')
-    .then(data => setBill(data.data))
+    .then(res => setBill(res.data))
      setLoading(false);
   }, [])
   return {bills, loading}
