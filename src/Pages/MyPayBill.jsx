@@ -1,22 +1,23 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { AnimatePresence, motion } from 'motion/react';
-// import { jsPDF } from "jspdf";
-// import "jspdf-autotable";
+import jsPDF from 'jspdf';
+import { autoTable } from 'jspdf-autotable';
+import { format } from 'date-fns';
 
 const MyPayBill = () => {
   const [bills, setBills] = useState([]);
   const [selectedBill, setSelectedBill] = useState(null);
   const { user } = useContext(AuthContext);
-  const billModalRef = useRef(null);
   const userEmail = user.email;
   //  console.log(userEmail)
   useEffect(() => {
-    fetch(`http://localhost:3000/paybillpersonal?email=${userEmail}`)
+    fetch(`https://assignment-10-backend-six.vercel.app/paybillpersonal?email=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setBills(data);
       });
   }, []);
@@ -34,7 +35,7 @@ const MyPayBill = () => {
       toast.error('Please fill in all fields before submitting!');
       return;
     }
-    fetch(`http://localhost:3000/paybill/${selectedId}`, {
+    fetch(`https://assignment-10-backend-six.vercel.app/paybill/${selectedBill._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -42,10 +43,10 @@ const MyPayBill = () => {
       body: JSON.stringify(updatebill),
     })
       .then((res) => res.json())
-      .then((data) => {
-        window.location.reload();
+      .then(() => {
+        setBills((prev) => prev.map((bill) => (bill._id === selectedBill._id ? { ...bill, ...updatebill } : bill)));
         toast.success('Bill updated successfully!');
-        billModalRef.current.close();
+        setSelectedBill(null);
       });
   };
 
@@ -60,7 +61,7 @@ const MyPayBill = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/paybill/${id}`, {
+        fetch(`https://assignment-10-backend-six.vercel.app/paybill/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
@@ -72,28 +73,29 @@ const MyPayBill = () => {
       }
     });
   };
-  // const handleDownloadReport = () => {
-  //   const doc = new jsPDF();
+  const handleDownloadPDF = () => {
+    const columns = [
+      { key: 'name', name: 'Name' },
+      { key: 'created_by', name: 'Email' },
+      { key: 'amount', name: 'Amount' },
+      { key: 'address', name: 'Address' },
+      { key: 'phone', name: 'Phone' },
+      { key: 'created_date', name: 'Date' },
+    ];
+    const rows = bills.map((bill, i) => ({ id: i + 1, name: bill.name, created_by: bill.created_by, amount: bill.amount, address: bill.address, phone: bill.phone, created_date: format(bill.created_date, 'd-MM-y, h:m a') }));
 
-  //   const columns = ["Name", "Email", "Amount", "Address", "Phone", "Date"];
-  //   const rows = bills.map(b => [
-  //     b.name,
-  //     b.created_by,
-  //     b.amount,
-  //     b.address,
-  //     b.phone,
-  //     new Date(b.created_date).toLocaleString(),
-  //   ]);
+    const tableColumn = columns.map((col) => col.name);
+    const tableRows = rows.map((row) => columns.map((col) => row[col.key]));
 
-  //   doc.autoTable({
-  //     head: [columns],
-  //     body: rows,
-  //     startY: 25,
-  //     styles: { fontSize: 10 },
-  //   });
+    const doc = new jsPDF();
+    doc.text(`Bills of ${user.displayName}`, 15, 10);
 
-  //   doc.save("MyPayBill_Report.pdf");
-  // };
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+    });
+    doc.save('my-bills.pdf');
+  };
 
   return (
     <div className="max-w-[1440px] mx-auto mt-20">
@@ -103,8 +105,8 @@ const MyPayBill = () => {
         <h2 className="text-3xl font-bold mb-6 text-center">My Bills</h2>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="table table-xs border border-gray-300 shadow-md rounded-lg">
+      <div className="overflow-x-auto mx-2 md:mx-4 pb-2">
+        <table className="table table-xs min-w-[1200px] border border-gray-300 shadow-xs rounded-lg">
           <thead className="bg-gray-100 text-gray-800 text-[16px]">
             <tr className="border-b border-gray-300">
               <th className="px-4 py-2">Name</th>
@@ -124,7 +126,7 @@ const MyPayBill = () => {
                 <td className="px-4 py-2 border-r border-gray-200">{bill.amount}</td>
                 <td className="px-4 py-2 border-r border-gray-200">{bill.address}</td>
                 <td className="px-4 py-2 border-r border-gray-200">{bill.phone}</td>
-                <td className="px-4 py-2 border-r border-gray-200">{new Date(bill.created_date).toLocaleString()}</td>
+                <td className="px-4 py-2 border-r border-gray-200">{format(bill.created_date, 'd-MM-y, h:m a')}</td>
                 <td className="px-4 py-2 flex justify-center gap-2">
                   <button onClick={() => setSelectedBill(bill)} className="border border-gray-500 px-3 py-1 rounded-md">
                     Update
@@ -139,7 +141,9 @@ const MyPayBill = () => {
         </table>
       </div>
       <div className="flex justify-end py-5">
-        <button className="border border-gray-500 px-3 py-1 rounded-md ">Download Report</button>
+        <button onClick={handleDownloadPDF} className="border mr-4 border-gray-500 px-3 py-1 rounded-md ">
+          Download Report
+        </button>
       </div>
 
       <AnimatePresence>
@@ -180,32 +184,32 @@ const MyPayBill = () => {
               <form onSubmit={handlesubmit} className="flex flex-col gap-2">
                 <div>
                   <label className="block font-semibold mb-1">Email</label>
-                  <input type="email" value={selectedBill.created_by} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="Email" />
+                  <input type="email" value={selectedBill.created_by} readOnly className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="Email" />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1">BillId</label>
-                  <input type="text" value={selectedBill._id} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="ID" />
+                  <input type="text" value={selectedBill._id} readOnly className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="ID" />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1">Amount</label>
-                  <input type="text" value={selectedBill.amount} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="Amount" />
+                  <input type="text" value={selectedBill.amount} readOnly className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="Amount" />
                 </div>
 
                 <div>
                   <label className="block font-semibold mb-1">Name</label>
-                  <input type="text" defaultValue={selectedBill.name} name="name" className="w-full border px-3  py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)]  " placeholder="Name" />
+                  <input type="text" defaultValue={selectedBill.name} name="name" className="w-full border px-3  py-2 rounded-md text-(--input-text) bg-(--input-bg)  " placeholder="Name" />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1">Address</label>
-                  <input type="text" name="address" defaultValue={selectedBill.address} className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="Address" />
+                  <input type="text" name="address" defaultValue={selectedBill.address} className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="Address" />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1">Phone</label>
-                  <input type="text" name="phone" defaultValue={selectedBill.phone} className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="Number" />
+                  <input type="text" name="phone" defaultValue={selectedBill.phone} className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="Number" />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1">Date</label>
-                  <input type="text" value={new Date(selectedBill.created_date).toLocaleString()} readOnly className="w-full border px-3 py-2 rounded-md text-[var(--input-text)] bg-[var(--input-bg)] outline-none " placeholder="Date" />
+                  <input type="text" value={format(selectedBill.created_date, 'd-MM-y, h:m a')} readOnly className="w-full border px-3 py-2 rounded-md text-(--input-text) bg-(--input-bg) outline-none " placeholder="Date" />
                 </div>
                 <div className="flex justify-end mt-6">
                   <button className=" bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all w-fit font-bold ">Update</button>

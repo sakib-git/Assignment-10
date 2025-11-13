@@ -98,7 +98,7 @@ const Login = () => {
             {' '}
             <UserPlus size={60} />{' '}
           </div>
-          <h1 className="text-4xl font-semibold">Hello Friend</h1>
+          <h1 className="text-4xl font-semibold">Welcome Back!</h1>
           <p className="text-[18px]">Enter your personal details and start journey with us</p>
 
           <Link className="border flex gap-3 w-fit mx-auto px-8 py-2 rounded-full items-center" to="/register">

@@ -5,7 +5,7 @@ const LatestBills = () => {
     const [bills, setBills] = useState([]);
    
   useEffect(() => {
-     fetch('http://localhost:3000/latest-bills')
+     fetch('https://assignment-10-backend-six.vercel.app/latest-bills')
      .then(res => res.json())
      .then(data => {
 

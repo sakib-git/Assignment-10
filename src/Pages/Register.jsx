@@ -58,8 +58,8 @@ const Googleprovider = new GoogleAuthProvider();
           <div className="mx-auto">
             <ArrowRightToLine size={60} />
           </div>
-          <h1 className="text-4xl font-semibold max-sm:text-2xl">Welcome Back!</h1>
-          <p className="text-[16px]">To keep connected with us, please log in with your personal information.</p>
+          <h1 className="text-4xl font-semibold max-sm:text-2xl">Create Account</h1>
+          <p className="text-[16px]">To keep connected with us, please create account with your personal information.</p>
 
           <Link className="border flex gap-3 w-fit mx-auto px-8 py-2 rounded-full items-center" to="/login">
             <ArrowLeft size={20} className="border rounded-full" />
