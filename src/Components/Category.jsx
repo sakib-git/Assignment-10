@@ -20,7 +20,7 @@ const Category = () => {
 
         setCategories(uniqueCategories);
       }).catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }, []);
   const categoryBorder = {

@@ -36,7 +36,7 @@ const Googleprovider = new GoogleAuthProvider();
             
           })
           .catch((error) => {
-            console.log(error)
+            console.error(error)
           });
       })
   }

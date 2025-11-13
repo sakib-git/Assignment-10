@@ -6,7 +6,6 @@ import { serverApi } from '../Hook/useServerAPI';
 const Bills = () => {
   const { bills, loading } = UseBills();
   const [search, setSearch] = useState([]);
-  console.log(bills);
   useEffect(() => {
     setSearch(bills);
   }, [bills]);
@@ -19,7 +18,6 @@ const Bills = () => {
     fetch(`${serverApi}/search?search=${searchText}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setSearch(data);
       });
   };

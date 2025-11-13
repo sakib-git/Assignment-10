@@ -13,12 +13,10 @@ const MyPayBill = () => {
   const [selectedBill, setSelectedBill] = useState(null);
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
-  //  console.log(userEmail)
   useEffect(() => {
     fetch(`${serverApi}/paybillpersonal?email=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setBills(data);
       });
   }, []);
