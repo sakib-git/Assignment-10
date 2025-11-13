@@ -8,16 +8,19 @@ import { autoTable } from 'jspdf-autotable';
 import { format } from 'date-fns';
 import { serverApi } from '../Hook/useServerAPI';
 
+
 const MyPayBill = () => {
   const [bills, setBills] = useState([]);
   const [selectedBill, setSelectedBill] = useState(null);
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
   const userEmail = user.email;
   useEffect(() => {
     fetch(`${serverApi}/paybillpersonal?email=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
         setBills(data);
+        setLoading(false)
       });
   }, []);
 
@@ -95,7 +98,13 @@ const MyPayBill = () => {
     });
     doc.save('my-bills.pdf');
   };
-
+ if (loading) {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+    </div>
+  );
+}
   return (
     <div className="max-w-[1440px] mx-auto mt-20">
       <title>myPayBill</title>

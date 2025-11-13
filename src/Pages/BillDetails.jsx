@@ -49,7 +49,7 @@ const BillDetails = () => {
     navigate('/mybill');
   };
   return (
-    <div className="max-w-5xl mx-auto mt-10 p-6  bg-(--navbar-bg)  rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 mt-50">
+    <div className="max-w-5xl mx-auto p-6 bg-(--navbar-bg)  rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 mt-50 max-md:mx-2 ">
       <title>Details</title>
       <div className="md:w-1/2">
         <img src={image} alt={title} className="w-full h-full object-cover rounded-xl shadow-md" />
@@ -57,7 +57,7 @@ const BillDetails = () => {
 
       <div className="md:w-1/2 flex flex-col justify-between">
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold text-[var(--category)]">{title}</h1>
+          <h1 className="text-3xl  font-bold text-[var(--category)]">{title}</h1>
 
           <div className="flex flex-col gap-2 text-[var(--category)]">
             <p>
@@ -87,7 +87,7 @@ const BillDetails = () => {
           <button onClick={handleModal} className={`bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all w-fit font-bold ${isPayable ? '' : 'opacity-60'}`}>
             Pay Bill
           </button>
-          {!isPayable && <span className='text-red-500 text-xs'>Only current month bills can be paid</span>}
+          {!isPayable && <span className="text-red-500 text-xs">Only current month bills can be paid</span>}
         </div>
 
         <dialog ref={billModalRef} className="modal">

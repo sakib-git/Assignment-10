@@ -64,8 +64,8 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2 bg-(--navbar-bg) shadow-md rounded-full px-4 py-2 w-fit hover:shadow-lg ">
-            <img src={logo1} alt="UBMS Logo" className="w-8 h-8 rounded-full object-cover" />
-            <span className="font-semibold text-(--category) text-lg">UBMS</span>
+            <img src={logo1} alt="UBMS Logo" className="w-8 h-8 max-sm:w-4 max-sm:h-4 rounded-full object-cover" />
+            <span className="font-semibold text-(--category) text-lg max-sm:text-sm">UBMS</span>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

@@ -9,7 +9,7 @@ const Bills = () => {
   useEffect(() => {
     setSearch(bills);
   }, [bills]);
-  if (loading) return <p>Loading...</p>;
+  
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,12 +21,19 @@ const Bills = () => {
         setSearch(data);
       });
   };
+if (loading) {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+    </div>
+  );
+}
 
   return (
     <div className="  max-w-[1440px] mx-auto mt-20">
       <title>Bill</title>
       <h1 className="text-center text-4xl font-bold text-[var(--category)] py-4">Bills</h1>
-      <form onSubmit={handleSearch} className="text-center flex items-center justify-center gap-2">
+      <form onSubmit={handleSearch} className="text-center flex items-center justify-center gap-2 max-sm:px-4">
         <label className="input outline-none focus:none border-(--dark-border) rounded-full">
           <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">

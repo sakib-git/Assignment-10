@@ -5,6 +5,7 @@ import { serverApi } from '../Hook/useServerAPI';
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(`${serverApi}/bills`)
@@ -19,6 +20,7 @@ const Category = () => {
         });
 
         setCategories(uniqueCategories);
+        setLoading(false)
       })
       .catch((err) => {
         console.error(err);
@@ -32,6 +34,14 @@ const Category = () => {
     internet: 'hover:border-green-500',
   };
 
+ if (loading) {
+  return (
+    
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+    </div>
+  );
+}
   return (
     <div>
       <h1 className="text-2xl md:text-4xl text-center py-10 font-bold text-[var(--category)]">

@@ -6,6 +6,8 @@ import LatestBills from '../Components/LatestBills';
 import { AuthContext } from '../Provider/AuthProvider';
 import Section2 from '../Components/Section2';
 
+
+
 const Home = () => {
 
   return (

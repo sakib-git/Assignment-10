@@ -2,16 +2,28 @@ import React, { useEffect, useState } from 'react';
 import BillCard from '../Components/BillCard';
 import { serverApi } from '../Hook/useServerAPI';
 
+
 const LatestBills = () => {
   const [bills, setBills] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(`${serverApi}/latest-bills`)
       .then((res) => res.json())
       .then((data) => {
         setBills(data);
+        setLoading(false)
       });
   }, []);
+  
+ if (loading) {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+    </div>
+  );
+}
+
   return (
     <div>
       <h1 className="text-center text-4xl font-bold text-[var(--category)]">Latest Bills</h1>
