@@ -8,7 +8,7 @@ import electricity from '../assets/Electricity.webp'
 const Section = () => {
   return (
  <div className=" py-10">
-  <h2 className="text-4xl font-bold text-center text-[var(--category)] mb-8">Payment System </h2>
+  <h2 className="text-4xl font-bold text-center text-(--category) mb-8">Payment System </h2>
   <div className=" mx-auto grid grid-cols-1 gap-8 place-items-center max-w-[1200px]">
 
 
@@ -22,7 +22,7 @@ const Section = () => {
 </div>
     <div className=' flex-1 max-md:px-5'>
       <h4 className='text-4xl font-semibold mb-4'>Electricity Bill</h4>
-      <p className='text-gray-600 text-lg md:text-xl leading-relaxed'>Pay bills effortlessly from home with UBMS! Skip queues, ditch documents. Get instant digital receipts. Enjoy two free electricity, gas, water, or telephone bill payments monthly via UBMS App or *541#. Secure & convenient. Embrace smarter bill management. Download UBMS App or dial *247# today!</p>
+      <p className='text-gray-600 text-lg md:text-xl leading-relaxed'>Pay bills effortlessly from home with UBMS! Skip queues, ditch documents. Get instant digital receipts. Enjoy two free electricity, gas, water, or telephone bill payments monthly via UBMS App or *541#. Secure & convenient. Embrace smarter bill management. Download UBMS App or dial *541# today!</p>
     </div>
  </div>
 

@@ -41,7 +41,7 @@ const BillDetails = () => {
     navigate('/mybill')
   };
   return (
-    <div className="max-w-5xl mx-auto mt-10 p-6  bg-[var(--navbar-bg)]  rounded-2xl shadow-lg flex flex-col md:flex-row gap-6">
+    <div className="max-w-5xl mx-auto mt-10 p-6  bg-[var(--navbar-bg)]  rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 mt-50">
       <title>Details</title>
       <div className="md:w-1/2">
         <img src={image} alt={title} className="w-full h-full object-cover rounded-xl shadow-md" />

@@ -8,8 +8,11 @@ const UseBills = () => {
 
   useEffect(() => {
     axios('http://localhost:3000/bills')
-    .then(res => setBill(res.data))
-     setLoading(false);
+    .then(res => {
+      setBill(res.data)
+      setLoading(false);
+    })
+     
   }, [])
   return {bills, loading}
 };
